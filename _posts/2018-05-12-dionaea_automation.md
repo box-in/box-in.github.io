@@ -41,7 +41,7 @@ VirusTotaに照合した結果に応じてバイナリを抽出する仕組み�
 #### 2. バイナリ一覧を取得する
 
 既存のスクリプトの影響で`/data/dionaea/binaries/`の中身は逐一変化する。
-1時間毎にwannacryを除去し、毎日3:27にバイナリをアーカイブしている。
+10分毎にwannacryを除去し、毎日3:27にバイナリをアーカイブしている。
 バイナリ一覧を取るのにこれでは都合が悪いので、状態が固定されている`/data/dionaea/binaries.tgz.1.gz`を参照する。
 `vtscan.py`はファイル一覧を受け取ってVirusTotalと照合するスクリプト。
 `/home/tsec/artifact/`は未知のバイナリを抽出するディレクトリ。
@@ -57,7 +57,7 @@ fi
 zcat $input | tar ztv | cut -d "/" -f 5 | xargs python vtscan.py
 ```
 
-03:27に環境がリブートされてバイナリがアーカイブされるため、今回のスクリプトは04:27にセットしておく
+03:27に環境がリブートされて最新のバイナリが`/data/dionaea/binaries.tgz.1.gz`にアーカイブされるため、今回のスクリプトは04:27にセットしておく
 
 ```
 $ tail /etc/crontab
