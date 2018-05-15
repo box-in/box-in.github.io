@@ -46,6 +46,7 @@ VirusTotaに照合した結果に応じてバイナリを抽出する仕組み�
 `vtscan.py`はファイル一覧を受け取ってVirusTotalと照合するスクリプト。
 `/home/tsec/artifact/`は未知のバイナリを抽出するディレクトリ。
 
+*cronからシェルスクリプトを呼び出すとカレントディレクトリが変わるため各ファイルの場所はフルパスで指定すること*
 ```sh
 $ cat sendto_slack.sh
 #!/bin/sh
@@ -54,7 +55,7 @@ output=/home/tsec/artifact/
 if [ ! -d $output ]; then
     mkdir $output
 fi
-zcat $input | tar ztv | cut -d "/" -f 5 | xargs python vtscan.py
+zcat $input | tar ztv | cut -d "/" -f 5 | xargs python /home/tsec/.sh/vtscan.py
 ```
 
 03:27に環境がリブートされて最新のバイナリが`/data/dionaea/binaries.tgz.1.gz`にアーカイブされるため、今回のスクリプトは04:27にセットしておく
