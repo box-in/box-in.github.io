@@ -79,7 +79,7 @@ $ docker images | head -5
 REPOSITORY                TAG     IMAGE ID        CREATED            SIZE
 dtagdevsec/kibana         1710    81b21a130b5a    2 weeks ago        234 MB
 dtagdevsec/elasticsearch  1710    010748e212b0    2 weeks ago        129 MB
-dtagdevsec/logstash       1710    a3ed2cf9d889    2 weeks ago        384 MB
+dtagdevsec/logstash       1710    a3ed2cf9d889    2 weeks ago        378 MB
 dtagdevsec/cowrie         1710    838d1a736a1d    4 months ago       123 MB
 ```
 
@@ -107,6 +107,19 @@ tpotを再起動すればLogstash側の作業は完了。
 ```sh
 $ sudo systemctl restart tpot
 ```
+
+> #### 2018-05-22追記：
+> 1日経ったらコンテナイメージがもとに戻っていた。
+> どこか別のスクリプトを触る必要があるみたい。
+> 解決したら追記する。
+> ```
+> $ date; docker images | head -4
+> Tue May 22 00:39:51 JST 2018
+> REPOSITORY                 TAG     IMAGE ID        CREATED        SIZE
+> dtagdevsec/logstash        1710    03d5e4ce52e4    2 weeks ago    378 MB
+> dtagdevsec/kibana          1710    81b21a130b5a    2 weeks ago    234 MB
+> dtagdevsec/elasticsearch   1710    010748e212b0    2 weeks ago    129 MB
+> ```
 
 ## Kibanaの設定を変更する
 
