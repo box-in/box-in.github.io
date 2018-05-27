@@ -12,13 +12,13 @@ description: box-in is Infosec blog !
 #     run it like so: jekyll serve --baseurl=''
 #baseurl: '/jekyll-xixia'
 ## default date_format
-date_format: 
+date_format:
   title: "%Y-%m-%d"
   archive: "%m"
   categories: "%Y-%m"
   tag: "%Y-%m"
 # Language
-lan: "jp" 
+lan: "jp"
 
 paginate: 10
 
