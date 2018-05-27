@@ -58,7 +58,7 @@ b'\nctf4b{T4mp3r_4n07h3r_v4r14bl3_w17h_m3m0ry_c0rrup710n}\n'
 ```
 ### まとめ
 
-- FLAGはnctf4b{T4mp3r_4n07h3r_v4r14bl3_w17h_m3m0ry_c0rrup710n}
+- FLAGはctf4b{T4mp3r_4n07h3r_v4r14bl3_w17h_m3m0ry_c0rrup710n}
 - スタックの状態を想像するのが解決の糸口
 
 [@kusano_k]:https://qiita.com/kusano_k/items/9b74398f5bed2792d736
