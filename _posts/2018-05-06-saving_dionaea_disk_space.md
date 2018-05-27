@@ -34,9 +34,9 @@ drwxrw---- 7 tpot tpot    4096 May  6 03:29 ..
 ```
 
 　今回の目的は既知のマルウェアの除外に加えてDiskスペースを節約する事なので5267459byteのファイルを見ていく。
-- `0ab2aeda90221832167e5127332dd702`をVirusTotalで[照合した結果][1]{:target="_blank"}
+- `0ab2aeda90221832167e5127332dd702`をVirusTotalで[照合した結果][1]
 WannaCryであると判定された。
-- `62186bebffffcfafb1c70a8ff03fa317`をVirusTotalで[照合した結果][2]{:target="_blank"}
+- `62186bebffffcfafb1c70a8ff03fa317`をVirusTotalで[照合した結果][2]
 も同様だった。
 
 実はWannaCryのサイズが5267459byteであるというのは既知らしい。
@@ -47,7 +47,7 @@ T-Potは自身が侵害された場合に備えて定期的に設定をリセッ
 `/home/.sh/`にスクリプトを置いて`/etc/crontab`から呼び出せば良い。
 
 ```
-$ cat /home/tsec/.sh/clean_Dionaea_log.sh 
+$ cat /home/tsec/.sh/clean_Dionaea_log.sh
 #!/bin/sh
 
 find /data/Dionaea/binaries -size 5267459c | xargs rm -v
