@@ -110,3 +110,62 @@ AlphaというタイトルのPNGが1枚渡される.
 ![](/assets/images/post/20180907/usamimi1.png)
 ![](/assets/images/post/20180907/usamimi2.png)
 252と253の差はビット0の有無なのでαチャンネルビット0を抽出する.
+
+## Misc
+### Opening Movie
+
+[@otameshi61](http://otameshi61.hatenablog.com/entry/2018/09/09/154341)さんのwriteupのトレースです
+
+Windows用ILSplyを落としてきてMoviePlayer.dllを開く.
+namespaceが4つあるので一つずつ見ていくとMoviePlayer.Pagesにそれらしいコードが見つかった.
+C#知ってる人ならピンポイントで見にいけるのかな？
+![](/assets/images/post/20180907/MoviePlayer.png)
+
+countが300を超えるとtxtをiframeで読み込む処理になっている.
+```
+if (this.count >= 300)
+{
+  builder.AddContent(11, "\t");
+  builder.OpenElement(12, "div");
+  builder.AddAttribute(13, "class", "div");
+  builder.AddContent(14, "FLAG:");
+  builder.CloseElement();
+  builder.AddContent(15, "\n\t");
+  builder.OpenElement(16, "iframe");
+  builder.AddAttribute(17, "src", this.txt);
+  builder.CloseElement();
+  builder.AddContent(18, "\n");
+}
+```
+
+txtは`encrypt(str) + ".txt"`で作られている.
+```
+private string txt
+{
+  get
+  {
+    return this.encrypt("FLAG_IS_HERE") + ".txt";
+  }
+}
+```
+
+encryptメソッドはこれ.
+```
+private string encrypt(string str)
+{
+  MD5CryptoServiceProvider mD5CryptoServiceProvider = new MD5CryptoServiceProvider();
+  return BitConverter.ToString(mD5CryptoServiceProvider.ComputeHash(Encoding.UTF8.GetBytes(str))).ToLower().Replace("-", "");
+}
+```
+
+pythonで書き直す
+```
+import hashlib
+from binascii import hexlify
+import requests
+md5 = hashlib.md5()
+md5.update(bytes("FLAG_IS_HERE", "utf-8"))
+r = requests.get("http://blazor.cyberrebeat.adctf.online/" + hexlify(md5.digest()).decode("utf-8") + ".txt")
+print(r.text)
+```
+CRCTF{to the twilight of the internet}
