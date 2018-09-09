@@ -169,3 +169,8 @@ r = requests.get("http://blazor.cyberrebeat.adctf.online/" + hexlify(md5.digest(
 print(r.text)
 ```
 CRCTF{to the twilight of the internet}
+
+## 他にも読みたいwriteup
+- https://hiziriai.hatenablog.com/entry/2018/09/09/172539
+- https://st98.github.io/diary/posts/2018-09-09-cyberrebeatctf.html
+- http://otameshi61.hatenablog.com/entry/2018/09/09/154341
