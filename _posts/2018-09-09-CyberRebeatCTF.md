@@ -3,7 +3,7 @@ layout: post
 title: write-up CyberRebeatCTF
 date: 2018-09-09
 category: "CTF"
-tag: [CTF, うさみみハリケーン, gdb]
+tag: [CTF, うさみみハリケーン, gdb, ILSpy]
 permalink: CybetRebeatCTF
 ---
 
@@ -116,7 +116,7 @@ AlphaというタイトルのPNGが1枚渡される.
 
 [@otameshi61](http://otameshi61.hatenablog.com/entry/2018/09/09/154341)さんのwriteupのトレースです
 
-Windows用ILSplyを落としてきてMoviePlayer.dllを開く.
+Windows用ILSpyを落としてきてMoviePlayer.dllを開く.
 namespaceが4つあるので一つずつ見ていくとMoviePlayer.Pagesにそれらしいコードが見つかった.
 C#知ってる人ならピンポイントで見にいけるのかな？
 ![](/assets/images/post/20180907/MoviePlayer.png)
